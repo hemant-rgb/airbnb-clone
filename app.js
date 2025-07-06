@@ -88,7 +88,7 @@ app.use((req, res, next) => {
 });
 /*root route*/
 
-app.get("/",async(res,req,next)=>{
+app.get("/",async(req,res,next)=>{
   res.redirect("/listings");
 });
 
