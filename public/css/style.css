@@ -1,0 +1,262 @@
+body {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: weight;
+  font-style: normal;
+  display: flex; /*  this will make sure that the content occupy full width of the page    */
+  flex-direction: column;
+  min-height: 100vh;
+}
+/* remaining width by footer */
+.container {
+  flex: 1;
+}
+/* navigation bar*/
+
+.navbar {
+  height: 5 rem;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
+}
+.fa-compass {
+  font-size: 2rem;
+  color: #fe424d;
+}
+.nav-link {
+  color: #222222 !important;
+}
+
+/*footer*/
+
+.footer {
+  height: 8rem;
+  display: flex;
+  background-color: #ebebeb;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: space-evenly;
+  text-align: center;
+  font-size: medium;
+}
+.links {
+  width: 100%;
+}
+.social {
+  width: 100%;
+}
+
+.social i {
+  font-size: 1 rem;
+  margin-right: 1.2rem;
+  margin-left: 1 rem;
+}
+
+.links a {
+  text-decoration: none;
+  color: #222222;
+}
+.links a:hover {
+  text-decoration: underline;
+}
+
+/* show.ejs*/
+.ed {
+  display: flex;
+}
+/*cards */
+.card {
+  border: none !important;
+  margin-bottom: 2rem !important;
+  width: 11rem;
+
+  /* aspect-ratio: 1/1;
+  overflow:hidden; */
+}
+
+.card-img-wrapper {
+  position: relative;
+}
+.card-img-top {
+  border-radius: 1rem !important;
+  object-fit: cover !important;
+  width: 100%;
+  height: 8rem;
+  /* height:100%; */
+}
+.card-body {
+  padding: 0 !important;
+}
+
+.card-text {
+  font-weight: 400 !important ;
+  font-size: 0.8rem;
+  margin: 0;
+}
+a.title-show {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.price {
+  font-size: 0.7rem;
+}
+.fa-star {
+  font-size: 0.6rem;
+  opacity: 0.5 !important;
+}
+
+/* create page */
+.add-btn {
+  background-color: #fe424d !important;
+  border: none !important;
+}
+
+/*show page*/
+.show-img {
+  height: 40vh;
+  width: max-content;
+}
+
+.htxt-size {
+  font-size: 3rem;
+}
+
+/*Reviews*/
+
+.star-size {
+  font-size: large;
+}
+
+.star-rating .star {
+  font-size: 0.9rem; /* small stars */
+  margin-right: 2px;
+  opacity: 0.6; /* soft look */
+  color: gray; /* gray color for both filled and empty */
+}
+
+.review-card {
+  width: 100%;
+}
+/*delete button*/
+.btn {
+  background-color: #fe424d; /* your original red */
+  color: #ffffff; /* white text */
+  border: none;
+  padding: 0.5rem 0.8rem;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+/* Hover effect in light mode */
+.btn:hover {
+  background-color: #d9363f; /* slightly darker red on hover */
+}
+
+.dark-mode-btn {
+  padding: 0.3rem;
+  margin-right: 0.4rem;
+  border: 1px solid gray;
+  border-radius: 0.7rem;
+  display: flex;
+
+  align-items: center;
+
+  /* cursor:pointer; */
+}
+/* icons below navbar */
+#filters {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.filter {
+  text-align: center;
+  margin-top: 1rem;
+  margin-right: 2rem;
+  opacity: 0.7;
+}
+.filter:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+.filter p {
+  font-size: small;
+}
+
+/*Dark mode css*/
+
+body.dark {
+  background-color: #121212; /* dark background */
+  color: #f5f5f5; /* light text */
+}
+
+body.dark .navbar {
+  background-color: #1e1e1e; /* dark navbar */
+}
+
+body.dark .fa-compass {
+  color: #e63946; /* softer red for dark mode */
+}
+
+body.dark .nav-link {
+  color: #f5f5f5 !important;
+}
+
+body.dark .footer {
+  background-color: #1a1a1a;
+  color: #cccccc;
+}
+
+body.dark .links a {
+  color: #cccccc;
+}
+
+body.dark .links a:hover {
+  color: #ffffff;
+}
+
+body.dark .card {
+  background-color: #1f1f1f;
+  color: #f5f5f5;
+}
+
+body.dark .card-text,
+body.dark .price {
+  color: #e0e0e0;
+}
+
+body.dark .add-btn {
+  background-color: #e63946 !important;
+  color: #ffffff !important;
+}
+
+body.dark .star-rating .star {
+  color: #ffcc00; /* golden stars in dark mode */
+}
+
+body.dark .btn {
+  background-color: #e63946; /* softer red for dark background */
+  color: #ffffff; /* keep text white */
+}
+
+body.dark .btn:hover {
+  background-color: #c5303d; /* deeper muted red */
+}
+
+body.dark .navbar-toggler {
+  border: 1px solid rgba(255, 255, 255, 0.3); /* lighter border for dark bg */
+  background-color: #1e1e1e; /* dark background */
+}
+
+body.dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(255,255,255,0.7)' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+body.dark .dark-mode-btn {
+  border: 1px solid white;
+}

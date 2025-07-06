@@ -1,0 +1,161 @@
+<% layout('/layouts/boilerplate.ejs') -%>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>show</title>
+  </head>
+  <body>
+    <div class="row mt-3">
+      <div class="col-8 offset-2">
+        <h1 class="card-text htxt-size mb-3"><b><%=data.title%></b></h1>
+        <img
+          src="<%=data.image.url%>"
+          class="card-img-top show-img mb-"
+          alt="Image not found"
+        />
+        <!-- <h1 class="card-text htxt-size mb-2"><b>Following are the Details:</b></h1> -->
+        <p><b>Owner: </b><i><%=data.owner.username%></i></p>
+        <ul>
+          <!-- <li>TITLE: <%=data.title%></li> -->
+          <li>DESCRIPTION: <%=data.description%></li>
+          <li>PRICE: &#8377; <%=data.price.toLocaleString("en-IN")%></li>
+          <!-- this function will put commas according to indian standards  -->
+          <li>LOCATION: <%=data.location%></li>
+          <li>COUNTRY: <%=data.country%></li>
+        </ul>
+
+        <% if (currUser && currUser._id.equals(data.owner._id)){%>
+        <div class="ed">
+          <form method="GET" action="/listings/<%=data._id%>/edit">
+            <button class="btn btn-dark add-btn">EDIT</button>
+          </form>
+
+          <form method="POST" action="/listings/<%=data._id%>?_method=DELETE">
+            <button class="btn btn-dark add-btn ms-2">DELETE</button>
+          </form>
+        </div>
+
+        <%}%>
+      </div>
+    </div>
+    <% if(currUser){%>
+
+    <hr />
+    <!--  Write Review -->
+    <h4>
+      Leave a Review <i class="fa-sharp fa-solid fa-star star-size"></i>
+      <i class="fa-sharp fa-solid fa-star star-size"></i>
+      <i class="fa-sharp fa-solid fa-star star-size"></i>
+      <i class="fa-sharp fa-solid fa-star star-size"></i>
+      <i class="fa-sharp fa-solid fa-star star-size"></i>
+    </h4>
+    <div class="row mt-3">
+      <div class="col-8 offset-2">
+        <form
+          action="/listings/<%=data._id%>/review"
+          method="POST"
+          class="needs-validation"
+          novalidate
+        >
+          <div class="row">
+            <div class="mb-3 col-md-8">
+              <label for="comment" class="form-label">Comment</label>
+              <input
+                type="text"
+                placeholder="Awesome experience!"
+                class="form-control"
+                name="review[comment]"
+                id="comment"
+                required
+              />
+              <div class="invalid-feedback">
+                Please provide a valid Comment.
+              </div>
+            </div>
+            <div class="mb-3 col-md-4">
+              <label for="customRange4" class="form-label">Rating</label>
+              <input
+                type="range"
+                min="1"
+                max="5"
+                value="5"
+                name="review[rating]"
+                class="form-range"
+                id="customRange4"
+              />
+
+              <output
+                for="customRange4"
+                id="rangeValue"
+                aria-hidden="true"
+              ></output>
+            </div>
+          </div>
+          <button class="btn btn-dark add-btn">SUBMIT</button>
+        </form>
+      </div>
+    </div>
+    <%}%>
+    <hr />
+    <!-- List of Reviews -->
+    <h6><b>Reviews</b></h6>
+    <div class="row">
+      <% for (let review of data.reviews) { %>
+      <div class="col-md-6 col-lg-4 mb-3">
+        <div class="card shadow-sm rounded-4 p-3 review-card">
+          <div class="d-flex align-items-start gap-3">
+            <img
+              src="https://cdn-icons-png.flaticon.com/512/10263/10263313.png"
+              alt="User"
+              class="rounded-circle"
+              width="60"
+              height="60"
+            />
+            <div>
+              <h6 class="mb-1"><%=review.author.username%></h6>
+              <p class="mb-1 text-muted"><%= review.comment %></p>
+              <div class="d-flex align-items-center">
+                <span class="me-2 small">Rating:</span>
+                <div class="star-rating d-flex flex-row">
+                  <% for (let i = 1; i <= 5; i++) { %> <% if (i <=
+                  review.rating) { %>
+                  <i class="bi bi-star-fill star gray-star"></i>
+                  <% } else { %>
+                  <i class="bi bi-star star gray-star"></i>
+                  <% } %> <% } %>
+                </div>
+              </div>
+              <div>
+                <form
+                  action="/listings/<%=data._id%>/review/<%=review._id%>?_method=DELETE"
+                  method="POST"
+                >
+                  <button class="btn" style="font-size: small">
+                    <i class="fa-sharp fa-solid fa-trash"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% } %>
+    </div>
+
+    <!-- following is bootstrap script for rating functionality -->
+    <script>
+      // This is an example script, please modify as needed
+      const rangeInput = document.getElementById("customRange4");
+      const rangeOutput = document.getElementById("rangeValue");
+
+      // Set initial value
+      rangeOutput.textContent = rangeInput.value;
+
+      rangeInput.addEventListener("input", function () {
+        rangeOutput.textContent = this.value;
+      });
+    </script>
+  </body>
+</html>

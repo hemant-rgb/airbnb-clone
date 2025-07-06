@@ -1,0 +1,46 @@
+<% layout('/layouts/boilerplate.ejs') -%>
+
+<div class="row mt-3">
+  <div class="col-8 offset-2">
+    <h1 class="htxt-size"><b>Log In:</b></h1>
+    <form
+      method="POST"
+      action="/user/login"
+      class="needs-validation"
+      novalidate
+    >
+      <div class="mb-3">
+        <label for="username" class="form-label">username</label>
+        <input
+          type="text"
+          placeholder="username"
+          name="username"
+          class="form-control"
+          id="username"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide a valid username.</div>
+      </div>
+
+      <div class="mb-3">
+        <label for="password" class="form-label">password</label>
+        <input
+          type="password"
+          placeholder="password"
+          name="password"
+          class="form-control"
+          id="password"
+          required
+        />
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">Please provide a valid password.</div>
+      </div>
+
+      <button class="btn btn-dark add-btn">LogIn</button>
+    </form>
+    <p style="font-size: small">
+      Don't have an account? <a href="/user/signup">SIGN-UP!</a>
+    </p>
+  </div>
+</div>

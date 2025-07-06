@@ -1,0 +1,124 @@
+<% layout('/layouts/boilerplate.ejs') -%>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EDIT</title>
+  </head>
+  <body>
+    <div class="row mt-3">
+      <div class="col-8 offset-2">
+        <h1 class="htxt-size"><b>EDIT THIS: </b></h1>
+        <form
+          method="POST"
+          action="/listings/<%=data._id%>?_method=PUT"
+          class="needs-validation"
+          novalidate
+          enctype="multipart/form-data"
+        >
+          <div class="mb-3">
+            <label for="title " class="form-label">Title</label>
+            <input
+              type="text"
+              value="<%=data.title%>"
+              name="listing[title]"
+              id="title"
+              class="form-control"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please provide a valid Title.</div>
+          </div>
+          <div class="mb-3">
+            <p>Original Image</p>
+            <img src="<%=originalImage%>" alt="<%=data.image.filename%>" />
+          </div>
+
+          <div class="mb-3">
+            <label for="Image" class="form-label">Upload New Image</label>
+            <input
+              type="file"
+              value="<%=data.image.filename%>"
+              name="listing[image]"
+              class="form-control"
+              id="Image "
+              required
+            />
+          </div>
+
+          <br />
+          <div class="mb-3">
+            <label for="description " class="form-label">Description</label>
+            <textarea
+              id="description"
+              class="form-control"
+              name="listing[description]"
+              required
+            >
+<%=data.description%></textarea
+            >
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">
+              Please provide a valid Description.
+            </div>
+          </div>
+
+          <br />
+          <div class="row">
+            <div class="mb-3 col-md-4">
+              <label for="price " class="form-label">Price</label>
+              <input
+                type="number"
+                value="<%=data.price%>"
+                name="listing[price]"
+                id="price"
+                class="form-control"
+                min="1"
+                required
+              />
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">Please enter valid Price.</div>
+            </div>
+
+            <br />
+
+            <div class="mb-3 col-md-8">
+              <label for="country " class="form-label">Country</label>
+              <input
+                type="text"
+                value="<%=data.country%>"
+                name="listing[country]"
+                id="country"
+                class="form-control"
+                required
+              />
+              <div class="valid-feedback">Looks good!</div>
+              <div class="invalid-feedback">
+                Please provide a valid Country.
+              </div>
+            </div>
+            <br />
+          </div>
+          <div class="mb-3">
+            <label for=" location" class="form-label">Location</label>
+            <input
+              type="text"
+              value="<%=data.location%>"
+              name="listing[location]"
+              id="location"
+              class="form-control"
+              required
+            />
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">Please provide a valid Location.</div>
+          </div>
+
+          <br />
+          <button class="btn btn-dark add-btn">DONE</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>

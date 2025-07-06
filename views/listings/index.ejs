@@ -1,0 +1,102 @@
+<% layout('/layouts/boilerplate.ejs') -%>
+
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wanderlust</title>
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+<style>
+ 
+</style>
+  <body>
+    <!-- <h1><b> AIR BNB HOME </b></h1> -->
+     <div id="filters">
+      <div class="filter">
+        <div><i class="fa-solid fa-fire"></i></div>
+        <p >Trending</p>
+      </div>
+
+      <div class="filter">
+        <div><i class="fa-solid fa-bed"></i></div>
+        <p >Rooms</p>
+      </div>
+       <div class="filter">
+        <div><i class=" fa-solid fa-mountain-city"></i></div>
+        <p >Iconic-Cities</p>
+      </div>
+       <div class="filter">
+        <div><i class="fa-solid fa-mountain"></i></div>
+        <p >Mountains</p>
+      </div>
+       
+       <div class="filter">
+        <div><i class="fa-solid fa-campground"></i></div>
+        <p >Camping</p>
+      </div>
+       <div class="filter">
+        <div><i class="fa-solid fa-cow"></i></div>
+        <p >Farms</p>
+      </div>
+       <div class="filter">
+        <div><i class="fa-solid fa-snowman"></i></div>
+        <p >Arctic</p>
+      </div>
+      <div class="filter">
+        <div><i class="fa-solid fa-person-swimming"></i></div>
+        <p >Amazing-pools</p>
+      </div>
+       <div class="filter">
+        <div><i class="fa-solid fa-building"></i></div>
+        <p style="font-size:small">Hotels</p>
+      </div>
+      
+      
+
+     
+     
+      </div>
+      
+     
+    
+    
+
+    <div class="row ">
+     
+      <% for( li of list){%>
+
+
+        <div class="card">
+          <div class="card-img-wrapper"><a  href="/listings/<%=li._id%>">  <img src="<%=li.image.url%>" class="card-img-top" alt="<%=li.image.filename%>" /> 
+
+          <!-- <div class="heart-icon"  onclick="toggleHeart(this)" ><i class="fa-sharp-duotone fa-regular fa-heart"></i></div> -->
+</div>
+         
+          
+ 
+          <div class="card-body">
+            <p class="card-text">
+              <a class="title-show" href="/listings/<%=li._id%>"><b>
+                  <%=li.title %>
+                </b> </a>
+            <p class="price">&#8377;<%=li.price.toLocaleString("en-IN")%> for 2 nights  <i class="fa-sharp-duotone fa-solid fa-star"></i> 5.0</p>
+            </p>
+          </div>
+        </div>
+
+
+
+
+
+
+
+        <%}%>
+    </div>
+  </body>
+
+  </html>
+
+  
