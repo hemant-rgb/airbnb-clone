@@ -1,6 +1,9 @@
 const ExpressError = require("../utils/ExpressError.js");
 const listing = require("../models/listing.js");
 
+
+
+
 const Index = async (req, res) => {
   const list = await listing.find({});
   res.render("listings/index.ejs", { list });

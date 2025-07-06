@@ -86,6 +86,11 @@ app.use((req, res, next) => {
   res.locals.currUser = req.user; //this will pass user info to curruser for ejs files
   next();
 });
+/*root route*/
+
+app.get("/",async(res,req,next)=>{
+  res.redirect("/listings");
+});
 
 app.use("/listings", listingsRouter);
 app.use("/listings/:id/review", reviewsRouter);
